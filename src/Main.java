@@ -25,8 +25,12 @@ public class Main {
 
         /* Alan Hesaplama */
         System.out.println("Dikdörtgen Alan Hesaplama:");
-        System.out.println(area(5.0, 4.0));
-        System.out.println(area(-1.0, 4.0));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the width of the rectangle: ");
+        double width = scanner.nextDouble();
+        System.out.println("Enter the height of the rectangle: ");
+        double height = scanner.nextDouble();
+        System.out.println("Area: " + area(width, height));
 
         System.out.println("Daire Alan Hesaplama:");
         System.out.println(area(5.0));
@@ -35,7 +39,8 @@ public class Main {
 
     public static boolean shouldWakeUp(boolean isBarking, int time) {
         if (time < 0 || time > 23) return false;
-        return isBarking && (time < 8 || time > 20);
+        if (!isBarking) return false;
+        return (time < 8 || time > 20);
     }
 
     public static boolean hasTeen(int... ages) {
@@ -48,13 +53,12 @@ public class Main {
     public static boolean isCatPlaying(boolean isSummer, int temp) {
         int upperLimitAdd = 0;
         if (isSummer) upperLimitAdd = 10;
-
         return temp <= 35 + upperLimitAdd && temp >= 25;
     }
 
-    public static double area(double length1, double length2) {
-        if (length1 < 0 || length2 < 0) return -1;
-        return length1 * length2;
+    public static double area(double width, double height) {
+        if (width < 0 || height < 0) return -1;
+        return width * height;
     }
 
     public static double area(double radius) {
